@@ -27,13 +27,10 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install dependencies
+      - name: Install dependencies with npm
         run: |
-          npm install -g yarn
-          yarn install --network-timeout 600000
-
-      - name: Setup Expo
-        run: npx expo install
+          rm -f yarn.lock
+          npm install --legacy-peer-deps
 
       - name: Build APK
         run: |
