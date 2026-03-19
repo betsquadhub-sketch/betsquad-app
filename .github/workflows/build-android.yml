@@ -32,15 +32,18 @@ jobs:
           rm -f yarn.lock
           npm install --legacy-peer-deps
 
-      - name: Build APK
+      - name: Prebuild Android
+        run: npx expo prebuild --platform android --clean
+
+      - name: Build Debug APK
         run: |
-          npx expo prebuild --platform android --clean
           cd android
-          ./gradlew assembleRelease
+          ./gradlew clean
+          ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: BetSquad-APK
-          path: android/app/build/outputs/apk/release/*.apk
+          path: android/app/build/outputs/apk/debug/*.apk
           retention-days: 30
