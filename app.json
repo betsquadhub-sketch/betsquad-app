@@ -1,0 +1,83 @@
+{
+  "expo": {
+    "name": "BetSquad",
+    "slug": "betsquad",
+    "version": "1.02.3",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "betsquad",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.betsquad.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Per scansionare QR code wallet",
+        "NSPhotoLibraryUsageDescription": "Per caricare immagini profilo"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#0f0f23"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.betsquad.app",
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.CAMERA"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "betsquad"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        },
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "wc",
+              "host": "*"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#0f0f23"
+        }
+      ],
+      "@react-native-community/datetimepicker"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2c86b5ba-b13c-4bdb-9d22-2cde228b9d57"
+      },
+      "router": {}
+    },
+    "owner": "chioppolo"
+  }
+}
