@@ -1,10 +1,17 @@
+// Crypto polyfill MUST be first for WalletConnect
+import '../expo-crypto-shim';
+
 import React, { useEffect, useState } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import * as SplashScreen from 'expo-splash-screen';
 import { useAuthStore } from '../src/store/authStore';
 import { View, ActivityIndicator, StyleSheet, Text } from 'react-native';
 import { LanguageProvider } from '../src/contexts/LanguageContext';
 import { WalletConnectProvider } from '../src/contexts/WalletConnectContext';
+
+// Prevent splash screen from auto-hiding
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const { isLoading, loadUser } = useAuthStore();
@@ -33,6 +40,13 @@ export default function RootLayout() {
     
     init().finally(() => clearTimeout(timeout));
   }, []);
+
+  // Hide splash screen when app is ready
+  useEffect(() => {
+    if (appReady && !isLoading) {
+      SplashScreen.hideAsync();
+    }
+  }, [appReady, isLoading]);
 
   if (!appReady || isLoading) {
     return (
