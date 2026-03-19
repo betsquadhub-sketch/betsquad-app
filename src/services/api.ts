@@ -5,6 +5,7 @@ const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL || '';
 
 const api = axios.create({
   baseURL: `${BACKEND_URL}/api`,
+  timeout: 10000, // 10 second timeout to prevent hangs
   headers: {
     'Content-Type': 'application/json',
   },

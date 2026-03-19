@@ -2,12 +2,12 @@
   "expo": {
     "name": "BetSquad",
     "slug": "betsquad",
-    "version": "1.06",
+    "version": "1.07",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "betsquad",
     "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.betsquad.app",
